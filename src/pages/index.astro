@@ -1,0 +1,144 @@
+---
+import { getCollection } from "astro:content";
+import PostCard from "../components/PostCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const posts = (await getCollection("posts", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf(),
+);
+const featuredPost = posts[0];
+const archivePosts = posts.slice(1);
+const topics = [...new Set(posts.flatMap((post) => post.data.tags))];
+
+const featuredDate = featuredPost?.data.publishedDate.toLocaleDateString("en-NG", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+const featuredWords = featuredPost?.body?.trim().split(/\s+/).length ?? 0;
+const featuredReadingTime = Math.max(1, Math.ceil(featuredWords / 220));
+const featuredAuthorInitials = featuredPost?.data.author
+  .split(/\s+/)
+  .slice(0, 2)
+  .map((name) => name[0])
+  .join("")
+  .toUpperCase();
+---
+
+<BaseLayout
+  title="RumptyCloud Blog"
+  description="Practical guides for deploying applications, managing infrastructure, and building on RumptyCloud."
+  image="/images/how-to-deploy-nodejs-app-rumptycloud-banner.png"
+  imageAlt="How to deploy a Node.js app on RumptyCloud"
+>
+  <section class="journal-masthead">
+    <div class="shell masthead-grid">
+      <div>
+        <p class="eyebrow">The RumptyCloud Journal</p>
+        <h1>Notes for people who ship.</h1>
+      </div>
+      <div class="masthead-intro">
+        <p>
+          Practical guides, product updates, and honest field notes for developers
+          building and deploying on RumptyCloud.
+        </p>
+        <a href="/rss.xml">Follow via RSS <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  {
+    topics.length > 0 && (
+      <div class="topic-bar">
+        <div class="shell topic-bar-inner" aria-label="Topics">
+          <span class="topic-label">Explore</span>
+          <a href="#latest">Latest</a>
+          {topics.map((topic) => <span>{topic}</span>)}
+        </div>
+      </div>
+    )
+  }
+
+  <div class="shell journal-content">
+    {
+      featuredPost ? (
+        <section id="latest" class="featured-section" aria-labelledby="featured-heading">
+          <div class="editorial-heading">
+            <div>
+              <p class="section-kicker">Featured story</p>
+              <h2 id="featured-heading">Latest from RumptyCloud</h2>
+            </div>
+            <span class="issue-marker">No. {String(posts.length).padStart(2, "0")}</span>
+          </div>
+
+          <article class="featured-story">
+            <a class="featured-image-link" href={`/blog/${featuredPost.id}/`} aria-label={`Read ${featuredPost.data.title}`}>
+              <img
+                src={featuredPost.data.cover}
+                width="1200"
+                height="630"
+                alt={featuredPost.data.coverAlt}
+              />
+            </a>
+            <div class="featured-story-body">
+              <div class="post-meta">
+                <span>{featuredPost.data.tags[0]}</span>
+                <span>{featuredReadingTime} min read</span>
+              </div>
+              <h3>
+                <a href={`/blog/${featuredPost.id}/`}>{featuredPost.data.title}</a>
+              </h3>
+              <p>{featuredPost.data.description}</p>
+              <div class="featured-footer">
+                <div class="author-line">
+                  <span class="author-mark" aria-hidden="true">{featuredAuthorInitials}</span>
+                  <span>
+                    <strong>{featuredPost.data.author}</strong>
+                    <time datetime={featuredPost.data.publishedDate.toISOString()}>{featuredDate}</time>
+                  </span>
+                </div>
+                <a class="read-story" href={`/blog/${featuredPost.id}/`}>
+                  Read story <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </section>
+      ) : (
+        <section class="empty-state">
+          <p class="eyebrow">The RumptyCloud Journal</p>
+          <h2>First story coming soon.</h2>
+          <p>Follow the RSS feed to catch it when it lands.</p>
+        </section>
+      )
+    }
+
+    {
+      archivePosts.length > 0 && (
+        <section id="all-articles" class="archive-section" aria-labelledby="all-articles-heading">
+          <div class="editorial-heading archive-heading">
+            <div>
+              <p class="section-kicker">The archive</p>
+              <h2 id="all-articles-heading">All articles</h2>
+            </div>
+            <span>{archivePosts.length} {archivePosts.length === 1 ? "story" : "stories"}</span>
+          </div>
+          <div class="post-list">
+            {archivePosts.map((post, index) => <PostCard post={post} index={index + 2} />)}
+          </div>
+        </section>
+      )
+    }
+
+    <aside class="journal-cta" aria-labelledby="journal-cta-heading">
+      <div>
+        <p class="section-kicker">Stay in the loop</p>
+        <h2 id="journal-cta-heading">New ideas, without the noise.</h2>
+      </div>
+      <div>
+        <p>Get practical RumptyCloud guides in any reader that supports RSS.</p>
+        <a class="button-link button-link-solid" href="/rss.xml">Subscribe via RSS</a>
+      </div>
+    </aside>
+  </div>
+</BaseLayout>

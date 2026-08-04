@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"posts">;
+  index?: number;
+}
+
+const { post, index = 1 } = Astro.props;
+const date = post.data.publishedDate.toLocaleDateString("en-NG", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+const words = post.body?.trim().split(/\s+/).length ?? 0;
+const readingTime = Math.max(1, Math.ceil(words / 220));
+---
+
+<article class="post-card">
+  <a class="post-card-image" href={`/blog/${post.id}/`} aria-label={`Read ${post.data.title}`}>
+    <img
+      src={post.data.cover}
+      width="1200"
+      height="630"
+      alt={post.data.coverAlt}
+      loading="lazy"
+    />
+  </a>
+  <div class="post-card-index" aria-hidden="true">{String(index).padStart(2, "0")}</div>
+  <div class="post-card-body">
+    <div class="post-meta">
+      <span>{post.data.tags[0]}</span>
+      <span>{readingTime} min read</span>
+    </div>
+    <h3><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3>
+    <p>{post.data.description}</p>
+    <div class="post-card-footer">
+      <span>By {post.data.author}</span>
+      <time datetime={post.data.publishedDate.toISOString()}>{date}</time>
+    </div>
+  </div>
+</article>

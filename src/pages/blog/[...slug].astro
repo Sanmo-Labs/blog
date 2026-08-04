@@ -1,0 +1,87 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts", ({ data }) => !data.draft);
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<"posts">;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const published = post.data.publishedDate.toLocaleDateString("en-NG", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+const words = post.body?.trim().split(/\s+/).length ?? 0;
+const readingTime = Math.max(1, Math.ceil(words / 220));
+const site = Astro.site ?? Astro.url;
+const articleURL = new URL(`/blog/${post.id}/`, site);
+const imageURL = new URL(post.data.cover, site);
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.data.title,
+  description: post.data.description,
+  image: imageURL.href,
+  datePublished: post.data.publishedDate.toISOString(),
+  dateModified: (post.data.updatedDate ?? post.data.publishedDate).toISOString(),
+  mainEntityOfPage: articleURL.href,
+  author: {
+    "@type": "Organization",
+    name: post.data.author,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "RumptyCloud",
+    logo: {
+      "@type": "ImageObject",
+      url: new URL("/favicon.png", site).href,
+    },
+  },
+  keywords: post.data.tags.join(", "),
+};
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.cover}
+  imageAlt={post.data.coverAlt}
+  type="article"
+  publishedDate={post.data.publishedDate}
+  updatedDate={post.data.updatedDate}
+  structuredData={structuredData}
+>
+  <header class="article-header">
+    <p class="eyebrow">{post.data.tags[0]}</p>
+    <h1>{post.data.title}</h1>
+    <p class="article-deck">{post.data.description}</p>
+    <div class="post-meta">
+      <span>{post.data.author}</span>
+      <time datetime={post.data.publishedDate.toISOString()}>{published}</time>
+      <span>{readingTime} min read</span>
+    </div>
+  </header>
+
+  <img
+    class="article-cover"
+    src={post.data.cover}
+    width="1200"
+    height="630"
+    alt={post.data.coverAlt}
+  />
+
+  <article class="prose">
+    <Content />
+  </article>
+</BaseLayout>
