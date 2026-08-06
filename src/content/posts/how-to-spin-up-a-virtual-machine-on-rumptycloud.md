@@ -205,7 +205,9 @@ If you're unsure, start with **Micro** — it's inexpensive, and you can move to
 The VM detail page puts day-to-day controls in the header and tabs:
 
 - **Start / Stop / Reboot** — available in the page header. Stopping interrupts running apps and SSH sessions; rebooting causes a short interruption while the VM comes back online.
-- **Metrics** — live charts for CPU, memory, disk usage, and bandwidth, with time windows from 15 minutes to 7 days.
+- **Metrics** — live charts for CPU, memory, disk usage, and bandwidth, with time windows from 15 minutes to 7 days:
+
+![The Metrics tab, with live charts for the VM](/images/how-to-spin-up-vm-metrics.png)
 - **Snapshots** — capture the state of the boot disk before risky changes, restore it, or clone a working environment into a new VM. Leave **Shut down VM during snapshot** checked for a cleaner restore point.
 - **Firewall** — attach firewall policies to control what traffic is allowed.
 
