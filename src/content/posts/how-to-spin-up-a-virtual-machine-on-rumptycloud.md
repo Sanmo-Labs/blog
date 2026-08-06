@@ -13,7 +13,7 @@ tags:
 draft: true
 ---
 
-RumptyCloud gives you isolated Linux virtual machines (VMs) for everything from quick experiments to long-running services. Each VM lives inside a workspace, joins its private network automatically, and is reachable over SSH through the Rumpty CLI — no public IP or port-forwarding required. In this guide, we will create a VM from scratch, connect to it, and run your first commands on it.
+RumptyCloud gives you isolated Linux virtual machines (VMs) for everything from quick experiments to long-running services. Each VM lives inside a workspace, joins its private network automatically, and is reachable over SSH through the Rumpty CLI. In this guide, we will create a VM from scratch, connect to it, and run your first commands on it.
 
 ## What you will need
 
@@ -23,7 +23,7 @@ Before you begin, make sure you have:
 - A terminal on your local machine
 - An SSH key pair (we will generate one if you don't have it)
 
-> You can follow this guide for free with the **Ephemeral Trial** compute plan. No billing setup is required.
+> You can follow this guide using the free **Ephemeral Trial** plan.
 
 ## 1. Create your account and workspace
 
@@ -33,9 +33,7 @@ Open the [sign-up page](https://console.rumptycloud.com/signup) and:
 2. Accept the terms and select **Create account**.
 3. Open the **verification link** sent to your email to activate the account, then log in.
 
-The first time you log in, RumptyCloud prompts you to create a **workspace**. A workspace is the top-level container for everything you build — VMs, deployments, databases, volumes, and more live inside it. Enter a name (e.g. `Dev Sandbox`), add an optional description, and select **Create workspace**.
-
-You will land on that workspace's dashboard. Everything you create from here belongs to it.
+On your first login, RumptyCloud prompts you to create a **workspace**. A workspace is your unit of organization and isolation in Rumpty Cloud. Every resource you create lives inside a workspace, isolated from your other workspaces. Each workspace has its own members, roles, and billing, so you can separate projects, environments (staging vs. production), or clients cleanly, VMs, deployments, databases, volumes, and more live inside it. Enter a name (e.g. `Dev Sandbox`), add an optional description, and select **Create workspace**.
 
 ## 2. Add an SSH key
 
@@ -81,7 +79,7 @@ Then select the **SSH key** that will let you into the machine:
 
 Finally, the optional **Startup Configuration** — **Install Packages** or **Add Script** to run a custom script on first boot (it runs with root privileges).
 
-Your VM automatically joins the workspace's default private network (e.g. `10.16.0.0/16`), so your resources can talk to each other securely. Custom Virtual Isolated Networks (VINs) are coming soon.
+Your VM automatically joins the workspace's default private network, so your resources can talk to each other securely. Custom Virtual Isolated Networks (VINs) are coming soon.
 
 Review the **Total Payment** estimate at the top of the form, then select **Create VM**.
 
@@ -108,13 +106,13 @@ The VM's status badge switches to **RUNNING** once provisioning finishes. The de
 
 ## 5. Connect to your VM
 
-RumptyCloud VMs don't have a public IP by default, so you connect through the browser console or the Rumpty CLI instead of a plain `ssh` command. Both options live on the VM detail page's **Connect** tab:
+RumptyCloud VMs don't have a public IP by default, so you can either connect through the browser console or the Rumpty CLI. Both options live on the VM detail page's **Connect** tab:
 
 ![The VM detail page with the Connect tab open, showing the spec summary and connection options](/images/how-to-spin-up-vm-running.png)
 
 ### Option A: Browser console (fastest)
 
-On the VM detail page, open the **Connect** tab and select **Launch console**. A terminal to the VM opens in a new browser tab — no keys or CLI needed. The VM must be running:
+On the VM detail page, open the **Connect** tab and click on the **Launch console** button. This opens a terminal session for your VM directly in the browser.
 
 ![The browser console, an SSH terminal to the VM running inside a browser tab](/images/how-to-spin-up-vm-web-console.png)
 
@@ -147,7 +145,7 @@ Now connect to your VM:
 rumpty ssh <vm-name> --ws <workspace-slug>
 ```
 
-This opens a secure SSH session tunneled through the platform as `root`. The VM detail page shows this command with your VM name and workspace slug already filled in — no public IP or manual port-forwarding required.
+This opens a secure SSH session. The VM detail page shows this command with your VM name and workspace slug already filled in — no public IP or manual port-forwarding required.
 
 > Useful flags: `--user` to log in as a different guest user, and `-i`/`--identity` to point at a specific private key. Set `RUMPTY_WORKSPACE` once and you can skip `--ws` on every command.
 
