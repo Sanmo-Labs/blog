@@ -10,7 +10,7 @@ tags:
   - "Linux"
   - "SSH"
   - "Getting Started"
-draft: false
+draft: true
 ---
 
 RumptyCloud gives you isolated Linux virtual machines (VMs) for everything from quick experiments to long-running services. Each VM lives inside a workspace, joins its private network automatically, and is reachable over SSH through the Rumpty CLI — no public IP or port-forwarding required. In this guide, we will create a VM from scratch, connect to it, and run your first commands on it.
