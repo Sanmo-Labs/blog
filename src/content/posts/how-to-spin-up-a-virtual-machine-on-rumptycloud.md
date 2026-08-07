@@ -188,11 +188,13 @@ Compute plans are selected when you create the VM. Prices are per month; usage a
 
 | Plan | Price | vCPU | Memory | Storage | Bandwidth |
 | --- | --- | --- | --- | --- | --- |
-| **Ephemeral Trial** | Free | 1 vCPU | 512 MB | 5 GB SSD | 50/50 Mbps |
-| **Launch** | $1.55/mo | 1 vCPU | 512 MB | 10 GB SSD | 100/100 Mbps |
-| **Micro** | $2.70/mo | 1 vCPU | 1 GB | 20 GB SSD | 100/100 Mbps |
-| **Core** | $4.60/mo | 1 vCPU | 2 GB | 30 GB SSD | 250/250 Mbps |
-| **Scale** | $6.15/mo | 2 vCPU | 2 GB | 50 GB SSD | 500/500 Mbps |
+| **Ephemeral Trial** | Free | 1 vCPU | 512 MB | 5 GB SSD | Included |
+| **Launch** | NGN 2,092.50/mo | 1 vCPU | 512 MB | 10 GB SSD | Included |
+| **Micro** | NGN 3,645.00/mo | 1 vCPU | 1 GB | 20 GB SSD | Included |
+| **Core** | NGN 6,210.00/mo | 1 vCPU | 2 GB | 30 GB SSD | Included |
+| **Scale** | NGN 8,302.50/mo | 2 vCPU | 2 GB | 50 GB SSD | Included |
+| **Power** | NGN 12,460.50/mo | 2 vCPU | 4 GB | 80 GB SSD | Down 750 Mbps / Up 750 Mbps |
+| **Ultra** | NGN 22,842.00/mo | 4 vCPU | 8 GB | 160 GB SSD | Down 1000 Mbps / Up 1000 Mbps |
 
 If you're unsure, start with **Micro** — it's inexpensive, and you can move to a larger plan later via a snapshot.
 
