@@ -321,7 +321,6 @@ h3 {
 }
 
 .editorial-heading h2,
-.journal-cta h2,
 .empty-state h2 {
   margin: 0;
   font-size: clamp(2rem, 4vw, 3.25rem);
@@ -524,32 +523,6 @@ h3 {
   margin-top: 1rem;
   color: var(--muted);
   font-size: 0.78rem;
-}
-
-.journal-cta {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(17rem, 0.8fr);
-  gap: clamp(2rem, 8vw, 7rem);
-  align-items: center;
-  margin-top: clamp(5rem, 10vw, 9rem);
-  border: 1px solid var(--line-strong);
-  border-radius: 1.25rem;
-  background:
-    linear-gradient(135deg, rgba(89, 194, 255, 0.1), transparent 48%),
-    var(--surface);
-  padding: clamp(2rem, 5vw, 4rem);
-}
-
-.journal-cta > div:last-child {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.25rem;
-}
-
-.journal-cta p:not(.section-kicker) {
-  margin: 0;
-  color: var(--muted);
 }
 
 .empty-state {
@@ -835,10 +808,6 @@ h3 {
 
   .post-card-body {
     grid-column: 2;
-  }
-
-  .journal-cta {
-    grid-template-columns: 1fr;
   }
 
   .footer-inner {
