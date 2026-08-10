@@ -97,7 +97,7 @@ Replace **username**, **password**, **host**, and **database** with the values f
 Here's what each `-c` flag does- `psql` runs each one in order against the same connection:
 
 1. **Creates a test table** — `metrics_write_test`, with an auto-incrementing `id`, a `batch_id` to group each run, a `payload` text column, an `n` counter, and a `created_at` timestamp that defaults to now. `IF NOT EXISTS` means you can rerun this command safely without erroring if the table's already there.
-2. **Inserts 1000 rows of sample data** — `generate_series(1, 1000)` produces a hundred row numbers, and for each one it inserts a row with a shared `batch_id` (timestamped, so each run is distinguishable), a random 640-character `payload` (20 repeats of an MD5 hash), and the row number as `n`. 
+2. **Inserts 1000 rows of sample data** — `generate_series(1, 1000)` produces a thousand row numbers, and for each one it inserts a row with a shared `batch_id` (timestamped, so each run is distinguishable), a random 640-character `payload` (20 repeats of an MD5 hash), and the row number as `n`. 
 3. **Reports the results** — counts the total rows in the table and prints the table's total on-disk size in a human-readable format like `800 KB`, so you can see the effect of the insert.
 
 
