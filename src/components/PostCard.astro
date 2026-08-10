@@ -17,6 +17,7 @@ const readingTime = Math.max(1, Math.ceil(words / 220));
 ---
 
 <article class="post-card">
+  <div class="post-card-index" aria-hidden="true">{String(index).padStart(2, "0")}</div>
   <a class="post-card-image" href={`/blog/${post.id}/`} aria-label={`Read ${post.data.title}`}>
     <img
       src={post.data.cover}
@@ -26,7 +27,6 @@ const readingTime = Math.max(1, Math.ceil(words / 220));
       loading="lazy"
     />
   </a>
-  <div class="post-card-index" aria-hidden="true">{String(index).padStart(2, "0")}</div>
   <div class="post-card-body">
     <div class="post-meta">
       <span>{post.data.tags[0]}</span>
