@@ -1,7 +1,7 @@
 ---
 title: "How to Create and Connect to a Postgres Database on RumptyCloud"
 description: "Create, connect to, and manage a Postgres database on RumptyCloud, from deployment to retrieving credentials to connecting with psql and GUI tools" 
-publishedDate: 2026-08-16
+publishedDate: 2026-08-10
 author: "Richard Coker"
 cover: "/images/how-to-deploy-postgresql-database-rumptycloud-banner.png"
 coverAlt: "How to Create and Connect to a Postgres Database on RumptyCloud, with the RumptyCloud and Postgres logos"
@@ -101,9 +101,8 @@ Here's what each `-c` flag does- `psql` runs each one in order against the same 
 3. **Reports the results** — counts the total rows in the table and prints the table's total on-disk size in a human-readable format like `800 KB`, so you can see the effect of the insert.
 
 
-# Option B: Connect Using a GUI tool
+# Option B: Connect Using pgAdmin (GUI tool)
 
-**Using pgAdmin**
 1. Open pgAdmin and click Add New Server.
 2. In the General tab:
     - Name: RumptyCloud DB (or any name you prefer)
@@ -113,26 +112,18 @@ Here's what each `-c` flag does- `psql` runs each one in order against the same 
     - Maintenance database: Your database name 
     - Username: Your database username 
     - Password: Click Save Password and enter your password 
-4. Click Save to connect.
 
-**Using DBeaver**
-1. Open DBeaver and click New Database Connection.
-2. Select PostgreSQL and click Next.
-3. Fill in:
-    - Host: Your database host
-    - Port: 5432
-    - Database: Your database name
-    - Username: Your database username
-    - Password: Your database password
-    - Click Test Connection to verify.
-4. Click Finish to connect.
+![PgAdmin Connection Tab](/images/how-to-deploy-postgresql-database-rumptycloud-connection.png)
+
+4. Click Save to connect.
 
 ### Example: create a table and write test data
 
 Once connected, you can run the same test as the CLI example above directly from your GUI's query editor:
 
 - **pgAdmin:** right-click your database in the left panel - **Query Tool**
-- **DBeaver:** select your connection → click **SQL Editor** - **New SQL Script**
+
+![PgAdmin Query Tool](/images/how-to-deploy-postgresql-database-rumptycloud-query-tool.png)
 
 Paste and run the following:
 
@@ -160,7 +151,8 @@ FROM metrics_write_test;
 
 In pgAdmin, run each statement individually with the **Execute** button (or all at once with **Execute Script**), and check the **Data Output** tab for results.
 
-In DBeaver, use **Execute SQL Script** to run all three statements at once, or **Execute SQL Statement** for one at a time, the results appear in the **Result Sets** panel below.
+![PgAdmin Query Output](/images/how-to-deploy-postgresql-database-rumptycloud-output.png)
+
 
 ## 4. Monitor Your Database
 
