@@ -1,7 +1,7 @@
 ---
 title: "How to Create and Connect to a Postgres Database on RumptyCloud"
 description: "Create, connect to, and manage a Postgres database on RumptyCloud, from deployment to retrieving credentials to connecting with psql and GUI tools" 
-publishedDate: 2026-08-16
+publishedDate: 2026-08-10
 author: "Richard Coker"
 cover: "/images/how-to-deploy-postgresql-database-rumptycloud-banner.png"
 coverAlt: "How to Create and Connect to a Postgres Database on RumptyCloud, with the RumptyCloud and Postgres logos"
