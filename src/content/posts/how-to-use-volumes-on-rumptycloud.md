@@ -49,37 +49,37 @@ A volume is a **block storage** device that exists independently of any VM. Thin
 Open **Storage → Volumes** in the sidebar, then select **Add Volume**.
 
 1. **Volume name** — a label like `data-volume`. Letters, numbers, hyphens, and underscores only.
-2. **Volume size** — drag the slider. Options run from 1 GB to 500 GB (defaults to 20 GB).
+2. **Volume size** — drag the slider. Options run from 20 GB to 500 GB (defaults to 20 GB).
 3. **Region (Zone)** — choose the same zone as the VM you plan to attach the volume to.
 4. **Description** *(optional)* — a note about what the volume is for.
 5. **Format volume on creation** — leave this checked (default). A blank volume is automatically formatted with **ext4** the first time it's attached.
 
 A live **estimated monthly storage cost** updates as you change the size. Select **Create Volume**.
 
-The volume appears in the Volumes list as `available`. Open it and you'll see its **Capacity**, **Filesystem**, **Zone**, **Formatted** status, and creation time.
+![The Create Volume form, with the volume name, 20 GB size slider, zone dropdown, and format option](/images/how-to-use-volume-create-volume-form.png)
 
-<!-- SCREENSHOT: Add Volume form (name, size slider, zone, format checkbox) here -->
+The volume appears in the Volumes list as `available`. Open it and you'll see its **Capacity**, **Filesystem**, **Zone**, **Formatted** status, and creation time.
 
 ## 2. Attach the volume to a VM
 
 From the volume detail page, select **Attach to VM** and pick the VM you created. (You can also do this earlier, during VM creation, under **Select or Create Volumes**.) Then start the VM if it isn't already running.
 
+![The Attach volume dialog, selecting the existing VM](/images/how-to-use-volume-attach-volume-to-vm.png)
+
 Nothing else to do — attached volumes are mounted automatically:
 
-- The disk appears as a SCSI device, e.g. `/dev/sdb`.
+- The disk appears as a SCSI device — in this guide it's `/dev/sda`, but the exact letter depends on your VM, so run `lsblk` to confirm.
 - Since the disk is blank and **Format volume on creation** was checked, it's formatted with ext4 on first attach.
 - It's mounted at **`/mnt/rumpty/<volume-id>`** and an `/etc/fstab` entry is added, so the mount persists across reboots.
 
-The exact device name and mount path are shown on the volume detail page under **Attachment**.
-
-<!-- SCREENSHOT: Volume detail page showing Attachment (VM name, /dev/sdb, /mnt/rumpty/<id>) here -->
+The exact device name and mount path are shown on the volume detail page under **Attachment** — the `<volume-id>` in the mount path is the volume's real ID, so always copy it from there instead of typing it by hand.
 
 ## 3. Put some data on it
 
 SSH into the VM (the [browser console](https://blog.rumptycloud.com/blog/how-to-spin-up-a-virtual-machine-on-rumptycloud/) is fastest) and verify the volume:
 
 ```bash
-lsblk           # spot /dev/sdb, the volume disk
+lsblk           # spot /dev/sda, the volume disk
 df -h /mnt/rumpty/<volume-id>   # the mount point and free space
 mount | grep rumpty   # confirm the mount / this format
 ```
@@ -87,15 +87,22 @@ mount | grep rumpty   # confirm the mount / this format
 Write a file so we can prove persistence later:
 
 ```bash
-echo "hello from volume" > /mnt/rumpty/<volume-id>/hello.txt
+echo "hello from rumptycloud" > /mnt/rumpty/<volume-id>/hello.txt
 cat /mnt/rumpty/<volume-id>/hello.txt
 ```
+
+Replace `<volume-id>` with the real ID from the volume detail page — e.g. if the mount path is `/mnt/rumpty/01a001d56d4a`, the command becomes:
+
+```bash
+echo "hello from rumptycloud" > /mnt/rumpty/01a001d56d4a/hello.txt
+cat /mnt/rumpty/01a001d56d4a/hello.txt
+```
+
+![Writing hello.txt on the first VM and reading it back](/images/how-to-use-volume-vm-terminal-on-first-vm.png)
 
 Anything you place under the mount point lives on the volume — stop packages, databases, media, whatever your app uses.
 
 > Take a mental snapshot of this file — I'm going to move the whole disk to a different VM, and that file is the proof the data followed.
-
-<!-- SCREENSHOT: lsblk output showing /dev/sdb + the hello.txt write on the first VM here -->
 
 ## 4. Detach and reattach to another VM
 
@@ -107,10 +114,21 @@ The real power of volumes is moving them between VMs. Create a second VM (same z
 umount /mnt/rumpty/<volume-id>
 ```
 
+![Unmounting the volume on the first VM](/images/how-to-use-volume-write-file-output-on-first-vm.png)
+
 2. Back on the volume detail page, select **Detach**. The volume returns to `available`.
+
+![The volume detail page — select Detach to release the volume from the VM](/images/how-to-use-volume-detach-volume-page.png)
+
 3. Select **Attach to VM**, and pick the **new** VM.
 
-Start the second VM and check:
+![The Attach volume dialog, this time selecting the new VM](/images/how-to-use-volume-attach-volume-to-new-vm.png)
+
+Start the second VM and open its browser console:
+
+![The new VM's detail page, with the browser console ready to launch](/images/how-to-use-volume-launch-browser-vm-terminal-page.png)
+
+Then check:
 
 ```bash
 lsblk
@@ -119,7 +137,7 @@ cat /mnt/rumpty/<volume-id>/hello.txt   # still there?
 
 Because the volume already has a filesystem, it's attached as-is — **not reformatted** — and your `hello.txt` is still exactly where you left it. Your data just walked from one VM to the next.
 
-<!-- SCREENSHOT: cat /mnt/rumpty/<id>/hello.txt output on the SECOND VM here — the money shot -->
+![Reading hello.txt back on the second VM — the data followed the volume](/images/how-to-use-volume-write-file-output-in-new-vm-browser-terminal.png)
 
 ## 5. Volumes survive the VM itself
 
@@ -130,7 +148,7 @@ Destroy a VM and the volume stays. When you open **Settings → Destroy VM** and
 ## 6. Managing volumes
 
 - **Resize** occurs via the slider at creation time; the console shows the running monthly cost as you change the size.
-- Volume pricing is **$0.05/GB/month** (10 GB runs ~$0.50/mo, 50 GB ~$2.50/mo, 500 GB ~$25/mo).
+- Volume pricing runs roughly **NGN 67.50/GB/month** (20 GB ~NGN 1,350/mo, 50 GB ~NGN 3,375/mo, 500 GB ~NGN 33,750/mo).
 - Delete is also on the volume detail page — a volume can't be deleted while attached, so detach it first.
 
 > Volumes aren't snapshots or backups: a destroyed VM's root disk is gone forever. Keep your own regular backups of data you can't afford to lose, and snapshot volumes before risky operations.
