@@ -1,0 +1,68 @@
+---
+const { tabs } = Astro.props; // e.g. [{ label: "Python", lang: "python" }, { label: "Node.js", lang: "javascript" }]
+---
+
+<div class="code-tabs">
+  <div class="code-tabs__buttons" role="tablist">
+    {tabs.map((tab, i) => (
+      <button
+        class="code-tabs__btn"
+        data-index={i}
+        aria-selected={i === 0 ? "true" : "false"}
+        role="tab"
+      >
+        {tab.label}
+      </button>
+    ))}
+  </div>
+  <div class="code-tabs__panels">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .code-tabs__buttons {
+    display: flex;
+    gap: 0.25rem;
+    border-bottom: 1px solid #2a2f3a;
+    margin-bottom: -1px;
+  }
+  .code-tabs__btn {
+    background: transparent;
+    border: none;
+    color: #9aa4b2;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+  }
+  .code-tabs__btn[aria-selected="true"] {
+    color: #f5efe4;
+    border-bottom-color: #59c2ff;
+  }
+  .code-tabs__panels > :global(*) {
+    display: none;
+  }
+  .code-tabs__panels > :global(.code-tabs__panel-active) {
+    display: block;
+  }
+</style>
+
+<script>
+  document.querySelectorAll(".code-tabs").forEach((wrapper) => {
+    const buttons = wrapper.querySelectorAll(".code-tabs__btn");
+    const panels = wrapper.querySelectorAll(".code-tabs__panels > *");
+
+    panels.forEach((p, i) => p.classList.toggle("code-tabs__panel-active", i === 0));
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const index = Number(btn.dataset.index);
+        buttons.forEach((b) => b.setAttribute("aria-selected", "false"));
+        btn.setAttribute("aria-selected", "true");
+        panels.forEach((p, i) => p.classList.toggle("code-tabs__panel-active", i === index));
+      });
+    });
+  });
+</script>
