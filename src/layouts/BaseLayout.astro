@@ -24,7 +24,7 @@ interface Props {
 const {
   title,
   description,
-  image = "/journal/img/hero-1080.webp",
+  image = "/journal/img/hero-1080.jpg",
   imageAlt = "The RumptyCloud Journal illustration",
   imageWidth,
   imageHeight,
@@ -41,8 +41,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = new URL(image, Astro.site);
 const fullTitle = title === "RumptyCloud Blog" ? title : `${title} | RumptyCloud Blog`;
 const imageType = ({ webp: "image/webp", png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg" } as Record<string, string>)[socialImageURL.pathname.split(".").pop() ?? ""];
-const width = imageWidth ?? (image === "/journal/img/hero-1080.webp" ? 1080 : undefined);
-const height = imageHeight ?? (image === "/journal/img/hero-1080.webp" ? 1080 : undefined);
+const width = imageWidth ?? (image === "/journal/img/hero-1080.jpg" ? 1080 : undefined);
+const height = imageHeight ?? (image === "/journal/img/hero-1080.jpg" ? 1080 : undefined);
 const homeURL = new URL("/", Astro.site ?? Astro.url).href;
 const organizationID = `${homeURL}#organization`;
 const websiteID = `${homeURL}#website`;

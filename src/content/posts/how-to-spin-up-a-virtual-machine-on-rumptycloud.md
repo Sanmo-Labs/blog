@@ -4,7 +4,7 @@ description: "Create, connect to, and manage a Linux virtual machine on RumptyCl
 publishedDate: 2026-08-05
 author: "Odukoya Abdullahi"
 authorType: "Person"
-cover: "/journal/img/note-02-1260.webp"
+cover: "/journal/img/note-02-social.jpg"
 coverWidth: 1260
 coverHeight: 760
 coverAlt: "Journal illustration for How to Spin Up a Virtual Machine on RumptyCloud"

@@ -4,7 +4,7 @@ description: "Create, connect to, and manage a Postgres database on RumptyCloud,
 publishedDate: 2026-08-10
 author: "Richard Coker"
 authorType: "Person"
-cover: "/journal/img/note-03-1260.webp"
+cover: "/journal/img/note-03-social.jpg"
 coverWidth: 1260
 coverHeight: 760
 coverAlt: "Journal illustration for How to Create and Connect to a Postgres Database on RumptyCloud"

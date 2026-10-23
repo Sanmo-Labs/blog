@@ -5,7 +5,7 @@ publishedDate: 2026-08-04
 updatedDate: 2026-08-04
 author: "Olalekan Odukoya"
 authorType: "Person"
-cover: "/journal/img/note-01-1260.webp"
+cover: "/journal/img/note-01-social.jpg"
 coverWidth: 1260
 coverHeight: 760
 coverAlt: "Journal illustration for How to Deploy a Node.js App on RumptyCloud"

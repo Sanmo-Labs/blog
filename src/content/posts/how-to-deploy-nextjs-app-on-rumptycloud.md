@@ -5,7 +5,7 @@ publishedDate: 2026-10-14
 updatedDate: 2026-10-14
 author: "John Chinedu Enechukwu"
 authorType: "Person"
-cover: "/journal/img/community-deploy-nextjs-1260.webp"
+cover: "/journal/img/community-deploy-nextjs-social.jpg"
 coverWidth: 1260
 coverHeight: 760
 coverAlt: "Journal illustration for How to Deploy a Next.js App on RumptyCloud"

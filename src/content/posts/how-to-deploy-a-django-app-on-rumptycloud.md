@@ -5,7 +5,7 @@ publishedDate: 2026-08-13
 updatedDate: 2026-08-13
 author: "Adedapo Adelola"
 authorType: "Person"
-cover: "/journal/img/note-04-1260.webp"
+cover: "/journal/img/note-04-social.jpg"
 coverWidth: 1260
 coverHeight: 760
 coverAlt: "Journal illustration for How to Deploy Django and Setup Postgres Gunicorn and Nginx on RumptyCloud"
