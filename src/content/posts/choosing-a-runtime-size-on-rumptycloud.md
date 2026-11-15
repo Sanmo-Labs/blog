@@ -1,6 +1,6 @@
 ---
 title: "Choosing a Runtime Size on RumptyCloud"
-description: "Free, Tiny, and Starter: what each RumptyCloud runtime size gives you, what it costs in Naira, and how to pick the right one for your app."
+description: "What each RumptyCloud runtime size gives you, what it costs in Naira, and how to pick the right one for your app."
 publishedDate: 2026-11-15
 updatedDate: 2026-11-15
 author: "John Chinedu Enechukwu"
@@ -17,7 +17,7 @@ tags:
 draft: false
 ---
 
-When you create a deployment on RumptyCloud, the form asks you to pick a **runtime size** before the first build runs. That choice decides how much CPU and memory your app gets, whether it sleeps when idle, and what it costs. This guide walks through the three sizes and how to choose.
+When you create a deployment on RumptyCloud, the form asks you to pick a **runtime size** before the first build runs. That choice decides how much CPU and memory your app gets, whether it sleeps when idle, and what it costs. There are five sizes; this guide walks through each one and how to choose.
 
 ## What you will need
 
@@ -34,6 +34,8 @@ When you create a deployment on RumptyCloud, the form asks you to pick a **runti
 | **Free** | `deploy-free` | Up to 1 | 512 MB | 50 GB | Free |
 | **Tiny** | `deploy-tiny` | Up to 1 | 512 MB | 50 GB | NGN 3.70/hr, up to NGN 2,699.28/mo |
 | **Starter** | `deploy-starter` | Up to 1.5 | 1 GB | 75 GB | NGN 7.40/hr, up to NGN 5,399.55/mo |
+| **Scale** | `deploy-scale` | Up to 2 | 2 GB | 250 GB | NGN 14.79/hr, up to NGN 10,799.11/mo |
+| **Pro** | `deploy-pro` | Up to 3 | 4 GB | 500 GB | NGN 27.74/hr, up to NGN 20,249.07/mo |
 
 Free and Tiny have the same compute underneath: up to 1 vCPU and 512 MB of RAM. The difference is what happens when nobody is using your app, and what you get for it.
 
@@ -48,6 +50,10 @@ Free is the right size for portfolios, internal tools, side projects, and anythi
 Paid sizes **bill hourly for the compute that runs**. A Tiny deployment costs NGN 3.70 per hour, which lands at about NGN 2,700 per month if the app stays up around the clock. Starter doubles the RAM (1 GB) and adds half a vCPU for NGN 7.40 per hour, about NGN 5,400 per month.
 
 On paid sizes, scale-to-zero is **optional**. You choose whether the app sleeps when idle (and pays nothing while asleep) or stays warm around the clock (and pays the hourly rate for the uptime). A webhook bot that must answer instantly, a cron-driven worker, or a small production API for real users are the cases that justify staying warm.
+
+## Scale and Pro: room to grow
+
+When an app outgrows 1 GB of RAM or needs to serve real traffic with headroom, **Scale** (up to 2 vCPU, 2 GB RAM, 250 GB of transfer) and **Pro** (up to 3 vCPU, 4 GB RAM, 500 GB of transfer) are the next two rungs, at NGN 14.79/hr and NGN 27.74/hr respectively. These sizes also pair with **autoscaling**: set a minimum and maximum instance count, and RumptyCloud adds instances under load, each billed at the plan rate.
 
 ## How to choose
 
