@@ -2,15 +2,15 @@
 title: "How to Manage Environment Variables on RumptyCloud"
 description: "Add, update, and rotate environment variables on RumptyCloud: the Env tab, bulk .env editing, how values reach your app, and the habits that keep credentials safe."
 publishedDate: 2026-10-19
-updatedDate: 2026-10-19
+updatedDate: 2026-11-21
 author: "John Chinedu Enechukwu"
 authorType: "Person"
-cover: "/journal/img/env-vars-secrets-1260.webp"
-coverWidth: 1260
-coverHeight: 760
-coverAlt: "Journal illustration for How to Manage Environment Variables on RumptyCloud"
-card: "/journal/img/env-vars-secrets-1260.webp"
-hero: "/journal/img/env-vars-secrets-2560.webp"
+cover: "/journal/img/env-vars-social.jpg"
+coverWidth: 1200
+coverHeight: 630
+card: "/journal/img/env-vars-card.webp"
+hero: "/journal/img/env-vars-hero.webp"
+coverAlt: "A cream panel of masked environment variables flowing through a padlock into an orange app on a blue Journal background"
 tags:
   - "Deployment"
   - "Security"
