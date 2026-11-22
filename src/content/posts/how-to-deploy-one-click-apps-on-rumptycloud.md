@@ -6,11 +6,11 @@ updatedDate: 2026-11-15
 author: "John Chinedu Enechukwu"
 authorType: "Person"
 cover: "/journal/img/one-click-apps-social.jpg"
-coverWidth: 1260
-coverHeight: 760
-coverAlt: "Journal illustration for How to Deploy One-Click Apps on RumptyCloud"
-card: "/journal/img/one-click-apps-1260.webp"
-hero: "/journal/img/one-click-apps-2560.webp"
+coverWidth: 1200
+coverHeight: 630
+coverAlt: "A cream app catalogue with one orange tile picked, a lime click, and a stack of running cream servers on a blue Journal background"
+card: "/journal/img/one-click-apps-card.webp"
+hero: "/journal/img/one-click-apps-hero.webp"
 tags:
   - "One-Click Apps"
   - "Deployment"
