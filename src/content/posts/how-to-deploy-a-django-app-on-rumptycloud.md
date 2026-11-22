@@ -40,7 +40,7 @@ Before you begin, make sure you have:
 ## 1. Get Rumpty CLI
 To SSH into your server, you'll use the official rumpty-cli tool. Install it with the following script:
 
-Follow instuction on https://github.com/Sanmo-Labs/rumpty-cli about how to install Rumpty Cli and get started 
+Follow instuction on https://github.com/cloverworks-hq/rumpty-cli about how to install Rumpty Cli and get started 
 
 ## 2. Spin up your Vm
 

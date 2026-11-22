@@ -14,10 +14,10 @@ PR branches. The cover/social image is JPEG; cards and heroes are WebP.
 
 | PR | Topic | Article |
 | --- | --- | --- |
-| [11](https://github.com/Sanmo-Labs/blog/pull/11) | volumes | how-to-use-volumes-on-rumptycloud.md |
-| [12](https://github.com/Sanmo-Labs/blog/pull/12) | resend | sending-emails-using-resend-smtp.mdx |
-| [13](https://github.com/Sanmo-Labs/blog/pull/13) | buckets | how-to-use-buckets-on-rumptycloud.md |
-| [14](https://github.com/Sanmo-Labs/blog/pull/14) | firewall | how-to-create-a-firewall-policy-on-rumptycloud.md |
+| [11](https://github.com/cloverworks-hq/blog/pull/11) | volumes | how-to-use-volumes-on-rumptycloud.md |
+| [12](https://github.com/cloverworks-hq/blog/pull/12) | resend | sending-emails-using-resend-smtp.mdx |
+| [13](https://github.com/cloverworks-hq/blog/pull/13) | buckets | how-to-use-buckets-on-rumptycloud.md |
+| [14](https://github.com/cloverworks-hq/blog/pull/14) | firewall | how-to-create-a-firewall-policy-on-rumptycloud.md |
 
 ## Prompt set
 
@@ -44,7 +44,7 @@ Common prompt, followed by the topic-specific subject below:
 ## Published updates and validation
 
 - PR 11: `0eaa315` — pushed to `ADEMOLA200/blog:post/volumes-on-rumpty`.
-- PR 12: `15db142` — pushed to `Sanmo-Labs/blog:resend-email`.
+- PR 12: `15db142` — pushed to `cloverworks-hq/blog:resend-email`.
 - PR 13: `74c1e75` — pushed to `ADEMOLA200/blog:post/how-to-use-buckets`.
 - PR 14: `d6783ae` — pushed to `ADEMOLA200/blog:post/how-to-create-firewall-policy`.
 
