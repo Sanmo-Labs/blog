@@ -4,10 +4,12 @@ description: "Learn how to deploy a full-stack Next.js application on RumptyClou
 publishedDate: 2026-10-22
 author: "Oluwaseun"
 authorType: "Person"
-cover: "/images/treviqo-production-lessons.png"
-coverWidth: 1731
-coverHeight: 909
-coverAlt: "Treviqo production deployment and reliability on RumptyCloud"
+cover: "/journal/img/fullstack-nextjs-social.jpg"
+coverWidth: 1200
+coverHeight: 630
+card: "/journal/img/fullstack-nextjs-card.webp"
+hero: "/journal/img/fullstack-nextjs-hero.webp"
+coverAlt: "An orange app splitting into cream web and worker panels that connect to a cream database and an orange Redis block on a blue Journal background"
 tags:
   - "Deployment"
   - "Next.js"
