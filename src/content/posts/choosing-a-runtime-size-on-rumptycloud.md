@@ -6,11 +6,11 @@ updatedDate: 2026-11-15
 author: "John Chinedu Enechukwu"
 authorType: "Person"
 cover: "/journal/img/runtime-sizes-social.jpg"
-coverWidth: 1260
-coverHeight: 760
-coverAlt: "Journal illustration for Choosing a Runtime Size on RumptyCloud"
-card: "/journal/img/runtime-sizes-1260.webp"
-hero: "/journal/img/runtime-sizes-2560.webp"
+coverWidth: 1200
+coverHeight: 630
+coverAlt: "Five cream blocks growing in size on a slider, with the middle one picked out in orange, on a blue Journal background"
+card: "/journal/img/runtime-sizes-card.webp"
+hero: "/journal/img/runtime-sizes-hero.webp"
 tags:
   - "Deployment"
   - "Billing"

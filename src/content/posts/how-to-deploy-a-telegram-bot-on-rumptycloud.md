@@ -6,11 +6,11 @@ updatedDate: 2026-11-15
 author: "John Chinedu Enechukwu"
 authorType: "Person"
 cover: "/journal/img/telegram-bot-social.jpg"
-coverWidth: 1260
-coverHeight: 760
-coverAlt: "Journal illustration for How to Deploy a Telegram Bot on RumptyCloud"
-card: "/journal/img/telegram-bot-1260.webp"
-hero: "/journal/img/telegram-bot-2560.webp"
+coverWidth: 1200
+coverHeight: 630
+coverAlt: "A cream chat bubble sending a paper plane to an orange bot, with a reply line looping back, on a blue Journal background"
+card: "/journal/img/telegram-bot-card.webp"
+hero: "/journal/img/telegram-bot-hero.webp"
 tags:
   - "Telegram"
   - "Bots"

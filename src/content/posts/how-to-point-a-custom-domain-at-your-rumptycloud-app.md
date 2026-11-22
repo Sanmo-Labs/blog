@@ -6,11 +6,11 @@ updatedDate: 2026-11-15
 author: "John Chinedu Enechukwu"
 authorType: "Person"
 cover: "/journal/img/custom-domains-social.jpg"
-coverWidth: 1260
-coverHeight: 760
-coverAlt: "Journal illustration for How to Point a Custom Domain at Your RumptyCloud App"
-card: "/journal/img/custom-domains-1260.webp"
-hero: "/journal/img/custom-domains-2560.webp"
+coverWidth: 1200
+coverHeight: 630
+coverAlt: "A cream domain bar and two DNS record rows joining at a lime check before an orange app, on a blue Journal background"
+card: "/journal/img/custom-domains-card.webp"
+hero: "/journal/img/custom-domains-hero.webp"
 tags:
   - "Deployment"
   - "Domains"
